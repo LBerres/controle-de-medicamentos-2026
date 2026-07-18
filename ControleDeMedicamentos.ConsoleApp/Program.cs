@@ -6,7 +6,15 @@
 // Objeto De Configuração Do Servidor Web
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+// Habilitar o MVC (Model - View - Controller) Para Que O Servidor Web Entenda Requisições HTTP
+builder.Services.AddControllersWithViews();
+
 WebApplication app = builder.Build();
+
+// Middlewares: Funções Que Executam À Cada Requisições e Respostas
+app.UseRouting();
+app.MapDefaultControllerRoute(); // {controller=Home}/{action=Index}/{id?}
+
 
 // Executa O Servidor Web
 app.Run();
