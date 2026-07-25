@@ -1,0 +1,25 @@
+@using ControleDeMedicamentos.WebApp.ModuloFornecedores
+@using ControleDeMedicamentos.WebApp.ModuloMedicamentos
+
+@model Medicamento
+
+<h2> Controle de Medicamentos </h2>
+
+<hr />
+<a href="/">Início</a> / @* Âncora ou Link *@
+<a href="/Fornecedor/Listar">Fornecedores</a> / @* Âncora ou Link *@
+<a href="/Medicamento/Listar">Medicamentos</a> / @* Âncora ou Link *@
+<hr />
+
+<h1>Excluir Medicamentos</h1>
+
+<form action="/Medicamento/Excluir/@Model.Id" method="post">
+
+    <p>Você Deseja Excluir o Medicamento "@Model.Nome"? Esta Ação É Irreversível.</p>
+
+    <button type="submit">Confirmar</button>
+</form>
+
+<p>
+    <a href="/Medicamento/Listar">Voltar Para a Lista</a>
+</p>
