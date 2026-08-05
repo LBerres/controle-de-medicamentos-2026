@@ -42,7 +42,7 @@ public sealed class FuncionarioController : Controller
     [HttpPost]
     public ActionResult Cadastrar(CadastrarFuncionarioViewModel cadastrarVm)
     {
-        Funcionario funcionario = new Funcionario(cadastrarVm.Nome, cadastrarVm.Telefone, cadastrarVm.Cpf);
+        Funcionario? funcionario = new Funcionario(cadastrarVm.Nome, cadastrarVm.Telefone, cadastrarVm.Cpf);
 
         repositorioFuncionario.Cadastrar(funcionario);
 
@@ -52,7 +52,7 @@ public sealed class FuncionarioController : Controller
     [HttpGet]
     public ActionResult Editar(int id)
     {
-        Funcionario funcionario = repositorioFuncionario.SelecionarPorId(id);
+        Funcionario? funcionario = repositorioFuncionario.SelecionarPorId(id);
 
         if (funcionario == null)
         {
