@@ -70,7 +70,7 @@ public sealed class FuncionarioController : Controller
     [HttpPost]
     public ActionResult Editar(EditarFuncionarioViewModel editarVm)
     {
-        Funcionario funcionarioAtualizado = new Funcionario(editarVm.Nome,
+        Funcionario? funcionarioAtualizado = new Funcionario(editarVm.Nome,
         editarVm.Telefone,
         editarVm.Cpf);
 
@@ -78,6 +78,32 @@ public sealed class FuncionarioController : Controller
         if (!conseguiuEditar)
 
             return NotFound();
+
+        return RedirectToAction(nameof(Listar));
+    }
+
+    [HttpGet]
+    public ActionResult Excluir(int id)
+    {
+        Funcionario? funcionario = repositorioFuncionario.SelecionarPorId(id);
+
+        if (funcionario == null)
+        {
+            return NotFound();
+        }
+
+        ExcluirFuncionarioViewModel vm = new ExcluirFuncionarioViewModel(id, funcionario.Nome);
+
+        return View(vm);
+    }
+    [HttpPost]
+    public ActionResult Excluir(ExcluirFuncionarioViewModel excluirVm)
+    {
+        bool conseguiuExcluir = repositorioFuncionario.Excluir(excluirVm.Id);
+        if (!conseguiuExcluir)
+        {
+            return NotFound();
+        }
 
         return RedirectToAction(nameof(Listar));
     }
