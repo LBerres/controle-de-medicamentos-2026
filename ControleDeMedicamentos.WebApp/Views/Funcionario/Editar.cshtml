@@ -1,4 +1,4 @@
-@model CadastrarFuncionarioViewModel
+@model EditarFuncionarioViewModel
 
 <h2> Controle de Medicamentos </h2>
 
@@ -9,9 +9,9 @@
 <a asp-controller="Funcionario" asp-action="Listar">Funcionários</a> / @* Âncora ou Link *@
 <hr />
 
-<h1>Cadastrar Funcionário</h1>
+<h1>Editar Funcionário</h1>
 
-<form asp-action="Cadastrar" method="post">
+<form asp-action="Editar" asp-route-id="@Model.Id" method="post">
 
     <div>
         <label asp-for="Nome"></label>
@@ -31,7 +31,7 @@
         <input asp-for="Cpf" type="text">
     </div>
     <br />
-    <button type="submit">Cadastrar</button>
+    <button type="submit">Confirmar Edição</button>
 </form>
 
 <p>
